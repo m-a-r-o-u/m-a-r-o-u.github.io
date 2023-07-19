@@ -16,12 +16,12 @@ minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Site Title"
+title                    : "MAB Homapage"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Your Name"
-description              : "An amazing website."
-url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+name                     : "Mares Alexander Barekzai"
+description              : "A place to publish informations."
+url                      : "https://m-a-r-o-u.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
@@ -104,15 +104,21 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
-  location         : "Somewhere"
+  name             : "Mares Alexander Barekzai"
+  avatar           : "/assets/images/mares_portrait_woods_small.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  bio              : "Senior Atmospheric Scientist"
+  location         : "Munich"
   email            :
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: "mailto:your.name@email.com"
+      url: "mailto:mares.barekzai@posteo.de"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/m-a-r-e-s-b-a-r-e-k-z-a-i/"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/m-a-r-o-u"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
