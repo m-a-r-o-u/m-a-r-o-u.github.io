@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "
 
 # Site Settings
 locale                   : "en-US"
-title                    : "MAB Homapage"
+title                    : "Mares Alexander Barekzai"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Mares Alexander Barekzai"
@@ -296,3 +296,4 @@ defaults:
       comments: # true
       share: true
       related: true
+      show_date: true
