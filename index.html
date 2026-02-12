@@ -1,12 +1,221 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>m-a-r-o-u</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>m-a-r-o-u | Tutorials & Profile</title>
+    <style>
+      :root {
+        --bg: #020202;
+        --text: #d9d9d9;
+        --muted: #7b7b7b;
+        --title: #f2f2f2;
+        --line: #1f1f1f;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--text);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        line-height: 1.45;
+      }
+
+      .container {
+        width: min(920px, 92vw);
+        margin: 0 auto;
+        padding: 72px 0 48px;
+      }
+
+      .intro {
+        text-align: center;
+        margin-bottom: 72px;
+      }
+
+      .avatar {
+        width: 128px;
+        aspect-ratio: 1;
+        margin: 0 auto 20px;
+        border-radius: 999px;
+        border: 1px solid #222;
+        background:
+          radial-gradient(circle at 35% 30%, #6be6ff 0 12%, transparent 13%),
+          radial-gradient(circle at 66% 62%, #f56bc8 0 14%, transparent 15%),
+          linear-gradient(135deg, #0a3042, #182328 55%, #281225);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(1.7rem, 2.4vw, 2.2rem);
+        color: var(--title);
+      }
+
+      .tagline {
+        margin: 6px 0 16px;
+        color: var(--muted);
+        font-size: 1.1rem;
+      }
+
+      .social {
+        display: inline-flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .social a {
+        color: #77d7ff;
+        text-decoration: none;
+        border-bottom: 1px dashed transparent;
+      }
+
+      .social a:hover,
+      .social a:focus-visible {
+        border-bottom-color: currentColor;
+      }
+
+      section {
+        margin: 0 auto 52px;
+      }
+
+      h2 {
+        color: #f0f0f0;
+        font-size: 1.25rem;
+        margin: 0 0 14px;
+      }
+
+      .posts {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .posts tr {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .posts td {
+        padding: 10px 0;
+      }
+
+      .post-title a {
+        text-decoration: none;
+      }
+
+      .post-title a:hover,
+      .post-title a:focus-visible {
+        text-decoration: underline;
+      }
+
+      .date {
+        color: var(--muted);
+        text-align: right;
+        white-space: nowrap;
+        padding-left: 22px !important;
+      }
+
+      .courses {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 14px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      .courses li {
+        border: 1px solid var(--line);
+        padding: 12px 14px;
+      }
+
+      .courses strong {
+        display: block;
+        color: #fff;
+        margin-bottom: 4px;
+      }
+
+      footer {
+        margin-top: 30px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      @media (max-width: 640px) {
+        .container { padding-top: 56px; }
+        .posts td { display: block; padding: 4px 0; }
+        .date { text-align: left; padding-left: 0 !important; padding-bottom: 10px !important; }
+      }
+    </style>
   </head>
-  <body style="background:#000;color:#fff;font-family:ui-monospace,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;padding:40px;">
-    <h1>It works</h1>
-    <p>GitHub Pages is publishing from main.</p>
+  <body>
+    <main class="container">
+      <header class="intro">
+        <div class="avatar" aria-hidden="true"></div>
+        <h1>Marou</h1>
+        <p class="tagline">Engineer, Tutor, Lifelong Learner</p>
+        <nav class="social" aria-label="Social links">
+          <a href="https://github.com/" target="_blank" rel="noreferrer noopener">GitHub</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer noopener">LinkedIn</a>
+          <a href="https://x.com/" target="_blank" rel="noreferrer noopener">X</a>
+          <a href="https://www.youtube.com/" target="_blank" rel="noreferrer noopener">YouTube</a>
+        </nav>
+      </header>
+
+      <section aria-labelledby="tutorials-title">
+        <h2 id="tutorials-title">Tutorials</h2>
+        <table class="posts">
+          <tbody>
+            <tr>
+              <td class="post-title"><a href="#" style="color:#ff66c4;">Build a Personal Site with GitHub Pages</a></td>
+              <td class="date">Mar 02, 2026</td>
+            </tr>
+            <tr>
+              <td class="post-title"><a href="#" style="color:#ffd84a;">Markdown Tips for Technical Writing</a></td>
+              <td class="date">Feb 24, 2026</td>
+            </tr>
+            <tr>
+              <td class="post-title"><a href="#" style="color:#17d1ff;">How I Organize Study Notes in Git</a></td>
+              <td class="date">Feb 12, 2026</td>
+            </tr>
+            <tr>
+              <td class="post-title"><a href="#" style="color:#f18b2e;">Beginner Guide to Linux CLI</a></td>
+              <td class="date">Jan 30, 2026</td>
+            </tr>
+            <tr>
+              <td class="post-title"><a href="#" style="color:#a988ff;">My Python Learning Roadmap</a></td>
+              <td class="date">Jan 16, 2026</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section aria-labelledby="courses-title">
+        <h2 id="courses-title">Courses I Took</h2>
+        <ul class="courses">
+          <li>
+            <strong>CS50x — Introduction to Computer Science</strong>
+            HarvardX · 2025
+          </li>
+          <li>
+            <strong>Google IT Support Professional Certificate</strong>
+            Coursera · 2024
+          </li>
+          <li>
+            <strong>Python for Everybody</strong>
+            University of Michigan · 2024
+          </li>
+          <li>
+            <strong>Responsive Web Design</strong>
+            freeCodeCamp · 2023
+          </li>
+        </ul>
+      </section>
+
+      <footer>
+        Built with Markdown-style content and hosted on GitHub Pages.
+      </footer>
+    </main>
   </body>
 </html>
