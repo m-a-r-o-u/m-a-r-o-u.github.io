@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" id="top">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,21 +21,23 @@
       }
 
       body {
-        min-height: 100vh;
         color: var(--text);
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-        display: grid;
-        grid-template-rows: 1fr auto;
       }
 
       .hero-wrap {
         display: grid;
         place-items: center;
-        padding: 28px;
+        padding: 36px 28px 12px;
       }
 
       .hero {
         text-align: center;
+      }
+
+      .avatar-link {
+        display: inline-block;
+        border-radius: 999px;
       }
 
       .avatar {
@@ -50,6 +52,11 @@
           linear-gradient(120deg, #113447 0%, #182730 52%, #24192f 100%);
       }
 
+      .avatar-link:hover .avatar,
+      .avatar-link:focus-visible .avatar {
+        border-color: #2a2a2a;
+      }
+
       h1 {
         margin: 0;
         font-size: clamp(1.38rem, 2.55vw, 2.18rem);
@@ -57,23 +64,29 @@
         letter-spacing: 0.14px;
       }
 
-      .tagline {
-        margin: 9px 0 0;
-        color: var(--muted);
-        font-size: clamp(0.9rem, 1.42vw, 1.18rem);
-        letter-spacing: 0.14px;
-        opacity: 1;
-        filter: blur(0);
-        transition: opacity 420ms ease, filter 420ms ease;
+      .section-nav {
+        margin-top: 12px;
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+        flex-wrap: wrap;
       }
 
-      .tagline.is-fading {
-        opacity: 0.34;
-        filter: blur(0.8px);
+      .section-nav a {
+        color: var(--muted);
+        text-decoration: none;
+        border-bottom: 1px dashed transparent;
+      }
+
+      .section-nav a:hover,
+      .section-nav a:focus-visible {
+        color: #c9c9c9;
+        border-bottom-color: currentColor;
+        outline: none;
       }
 
       .social {
-        margin-top: 18px;
+        margin-top: 16px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -108,24 +121,45 @@
       .linkedin { color: #0a8cff; }
       .scholar { color: #efc24b; }
 
-      .footer-nav {
-        border-top: 1px solid var(--line);
-        padding: 18px 12px 24px;
-        display: flex;
-        justify-content: center;
-        gap: 18px;
-        flex-wrap: wrap;
+      .content {
+        width: min(920px, 92vw);
+        margin: 12px auto 42px;
       }
 
-      .footer-nav a {
-        color: var(--muted);
+      .panel {
+        border-top: 1px solid var(--line);
+        padding-top: 16px;
+        margin-top: 24px;
+      }
+
+      .panel h2 {
+        margin: 0 0 10px;
+        color: #71e6ff;
+        font-size: 1rem;
+      }
+
+      .panel p,
+      .panel li {
+        line-height: 1.6;
+        color: #d7d7d7;
+      }
+
+      .panel ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .panel li { margin-bottom: 8px; }
+
+      .panel a {
+        color: #c8e8ff;
         text-decoration: none;
         border-bottom: 1px dashed transparent;
       }
 
-      .footer-nav a:hover,
-      .footer-nav a:focus-visible {
-        color: #c9c9c9;
+      .panel a:hover,
+      .panel a:focus-visible {
         border-bottom-color: currentColor;
         outline: none;
       }
@@ -146,9 +180,16 @@
   <body>
     <div class="hero-wrap">
       <main class="hero">
-        <div class="avatar" aria-hidden="true"></div>
+        <a class="avatar-link" href="#top" aria-label="Back to landing top">
+          <div class="avatar" aria-hidden="true"></div>
+        </a>
         <h1>Mares Barekzai, PhD</h1>
-        <p class="tagline" id="rotating-tagline">Engineer, Tutor, Lifelong Learner</p>
+
+        <nav class="section-nav" aria-label="Section navigation">
+          <a href="#cv">CV</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
 
         <nav class="social" aria-label="Social links">
           <a class="github" href="https://github.com/m-a-r-o-u" target="_blank" rel="noreferrer noopener" aria-label="GitHub">
@@ -179,67 +220,37 @@
       </main>
     </div>
 
-    <nav class="footer-nav" aria-label="Site navigation">
-      <a href="/cv/">CV</a>
-      <a href="/blog/">Blog</a>
-      <a href="/projects/">Projects</a>
-      <a href="/contact/">Contact</a>
-    </nav>
+    <div class="content">
+      <section class="panel" id="cv">
+        <h2>CV</h2>
+        <p>
+          PhD-trained engineer focused on HPC/GPU platforms, research infrastructure, and production-grade scientific systems.
+          I build reliable environments that help research teams move from ideas to reproducible results.
+        </p>
+        <ul>
+          <li>• Research infrastructure engineering and platform reliability</li>
+          <li>• HPC workload enablement and performance optimization</li>
+          <li>• Technical mentoring, onboarding, and clear documentation</li>
+        </ul>
+      </section>
 
-    <script>
-      (function () {
-        const tagline = document.getElementById('rotating-tagline');
-        if (!tagline) return;
+      <section class="panel" id="projects">
+        <h2>Projects</h2>
+        <ul>
+          <li><a href="#">GPU Workload Optimization Playbook</a> — practical tuning patterns for shared compute systems.</li>
+          <li><a href="#">Research Cluster Onboarding Kit</a> — templates and guardrails for fast, safe starts.</li>
+          <li><a href="#">Reproducible HPC Pipelines</a> — tooling patterns for stable, repeatable science workflows.</li>
+        </ul>
+      </section>
 
-        const fallback = [tagline.textContent.trim()];
-        const ROTATE_EVERY_MS = 5000;
-        const FADE_MS = 420;
-
-        function setTagline(text) {
-          tagline.textContent = text;
-        }
-
-        function randomNextIndex(length, currentIndex) {
-          if (length <= 1) return 0;
-          let nextIndex = currentIndex;
-          while (nextIndex === currentIndex) {
-            nextIndex = Math.floor(Math.random() * length);
-          }
-          return nextIndex;
-        }
-
-        function transitionTo(text) {
-          tagline.classList.add('is-fading');
-          window.setTimeout(() => {
-            setTagline(text);
-            tagline.classList.remove('is-fading');
-          }, FADE_MS);
-        }
-
-        fetch('descriptions.json', { cache: 'no-store' })
-          .then((response) => {
-            if (!response.ok) throw new Error('Failed to load descriptions.json');
-            return response.json();
-          })
-          .then((items) => {
-            const descriptions = Array.isArray(items)
-              ? items.filter((item) => typeof item === 'string' && item.trim().length > 0)
-              : fallback;
-
-            if (!descriptions.length) return;
-
-            let index = Math.floor(Math.random() * descriptions.length);
-            setTagline(descriptions[index]);
-
-            window.setInterval(() => {
-              index = randomNextIndex(descriptions.length, index);
-              transitionTo(descriptions[index]);
-            }, ROTATE_EVERY_MS);
-          })
-          .catch(() => {
-            setTagline(fallback[0]);
-          });
-      })();
-    </script>
+      <section class="panel" id="contact">
+        <h2>Contact</h2>
+        <p>
+          LinkedIn: <a href="https://www.linkedin.com/in/m-a-r-e-s-b-a-r-e-k-z-a-i/" target="_blank" rel="noreferrer noopener">m-a-r-e-s-b-a-r-e-k-z-a-i</a><br>
+          GitHub: <a href="https://github.com/m-a-r-o-u" target="_blank" rel="noreferrer noopener">m-a-r-o-u</a><br>
+          Google Scholar: <a href="https://scholar.google.com/citations?user=WXlo9H0AAAAJ&hl=en" target="_blank" rel="noreferrer noopener">Profile</a>
+        </p>
+      </section>
+    </div>
   </body>
 </html>
