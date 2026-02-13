@@ -405,10 +405,38 @@
             await renderSection(section, sectionFiles[section]);
           }
 
-          targetPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Keep the nav links under the cursor while switching sections.
+          // We intentionally avoid auto-scrolling here.
         }
 
+        function navigateToHash(hashValue) {
+          const nextHash = hashValue.startsWith('#') ? hashValue : `#${hashValue}`;
+          history.pushState({ hash: nextHash }, '', `${window.location.pathname}${window.location.search}${nextHash}`);
+          renderRoute();
+        }
+
+        navLinks.forEach((link) => {
+          link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const target = link.dataset.target;
+            if (!target) return;
+            navigateToHash(target);
+          });
+        });
+
+        document.addEventListener('click', (event) => {
+          const anchor = event.target.closest('a[href^="#"]');
+          if (!anchor) return;
+          const href = anchor.getAttribute('href') || '';
+          const route = href.replace(/^#/, '');
+          const routeSection = route.split('/')[0];
+          if (!sectionFiles[routeSection]) return;
+          event.preventDefault();
+          navigateToHash(href);
+        });
+
         window.addEventListener('hashchange', renderRoute);
+        window.addEventListener('popstate', renderRoute);
         window.addEventListener('DOMContentLoaded', renderRoute);
 
         if (homeLink) {
