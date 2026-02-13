@@ -28,6 +28,7 @@
       .hero-wrap {
         display: grid;
         place-items: center;
+        min-height: 76vh;
         padding: 36px 28px 12px;
       }
 
@@ -59,7 +60,7 @@
 
       h1 {
         margin: 0;
-        font-size: clamp(1.38rem, 2.55vw, 2.18rem);
+        font-size: clamp(1.9rem, 6vw, 3.2rem);
         color: #f6f6f6;
         letter-spacing: 0.14px;
       }
@@ -79,7 +80,8 @@
       }
 
       .section-nav a:hover,
-      .section-nav a:focus-visible {
+      .section-nav a:focus-visible,
+      .section-nav a.active {
         color: #c9c9c9;
         border-bottom-color: currentColor;
         outline: none;
@@ -123,13 +125,17 @@
 
       .content {
         width: min(920px, 92vw);
-        margin: 12px auto 42px;
+        margin: 8px auto 42px;
       }
 
       .panel {
         border-top: 1px solid var(--line);
         padding-top: 16px;
         margin-top: 24px;
+      }
+
+      .panel[hidden] {
+        display: none;
       }
 
       .panel h2 {
@@ -180,15 +186,15 @@
   <body>
     <div class="hero-wrap">
       <main class="hero">
-        <a class="avatar-link" href="#top" aria-label="Back to landing top">
+        <a class="avatar-link" href="#" id="home-link" aria-label="Back to landing top">
           <div class="avatar" aria-hidden="true"></div>
         </a>
         <h1>Mares Barekzai, PhD</h1>
 
         <nav class="section-nav" aria-label="Section navigation">
-          <a href="#cv">CV</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
+          <a href="#" data-target="cv">CV</a>
+          <a href="#" data-target="projects">Projects</a>
+          <a href="#" data-target="contact">Contact</a>
         </nav>
 
         <nav class="social" aria-label="Social links">
@@ -221,7 +227,7 @@
     </div>
 
     <div class="content">
-      <section class="panel" id="cv">
+      <section class="panel" id="cv" hidden>
         <h2>CV</h2>
         <p>
           PhD-trained engineer focused on HPC/GPU platforms, research infrastructure, and production-grade scientific systems.
@@ -234,7 +240,7 @@
         </ul>
       </section>
 
-      <section class="panel" id="projects">
+      <section class="panel" id="projects" hidden>
         <h2>Projects</h2>
         <ul>
           <li><a href="#">GPU Workload Optimization Playbook</a> — practical tuning patterns for shared compute systems.</li>
@@ -243,7 +249,7 @@
         </ul>
       </section>
 
-      <section class="panel" id="contact">
+      <section class="panel" id="contact" hidden>
         <h2>Contact</h2>
         <p>
           LinkedIn: <a href="https://www.linkedin.com/in/m-a-r-e-s-b-a-r-e-k-z-a-i/" target="_blank" rel="noreferrer noopener">m-a-r-e-s-b-a-r-e-k-z-a-i</a><br>
@@ -252,5 +258,44 @@
         </p>
       </section>
     </div>
+
+    <script>
+      (function () {
+        const navLinks = Array.from(document.querySelectorAll('.section-nav a[data-target]'));
+        const panels = Array.from(document.querySelectorAll('.panel'));
+        const homeLink = document.getElementById('home-link');
+
+        function hideAllPanels() {
+          panels.forEach((panel) => { panel.hidden = true; });
+          navLinks.forEach((link) => link.classList.remove('active'));
+        }
+
+        function showPanel(id) {
+          hideAllPanels();
+          const target = document.getElementById(id);
+          if (!target) return;
+          target.hidden = false;
+          const activeLink = navLinks.find((link) => link.dataset.target === id);
+          if (activeLink) activeLink.classList.add('active');
+        }
+
+        navLinks.forEach((link) => {
+          link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const target = link.dataset.target;
+            if (!target) return;
+            showPanel(target);
+          });
+        });
+
+        if (homeLink) {
+          homeLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            hideAllPanels();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        }
+      })();
+    </script>
   </body>
 </html>
