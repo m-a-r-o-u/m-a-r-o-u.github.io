@@ -184,15 +184,20 @@
       }
 
       .projects-return-link {
-        color: #71e6ff;
+        color: inherit;
         text-decoration: none;
         border-bottom: 1px dashed transparent;
+        margin-left: 0.2em;
       }
 
       .projects-return-link:hover,
       .projects-return-link:focus-visible {
         border-bottom-color: currentColor;
         outline: none;
+      }
+
+      .project-detail-title {
+        margin-top: 0;
       }
 
       .visually-hidden {
@@ -406,7 +411,8 @@
               await renderSection(section, projectPath);
               const projectHeading = targetPanel.querySelector('h1, h2, h3');
               if (projectHeading) {
-                projectHeading.outerHTML = '<h2><a class="projects-return-link" href="#projects">Projects ←</a></h2>';
+                const projectTitle = projectHeading.innerHTML;
+                projectHeading.outerHTML = `<h2>Projects<a class="projects-return-link" href="#projects" aria-label="Back to projects list">←</a></h2><h3 class="project-detail-title">${projectTitle}</h3>`;
               }
             } else {
               targetPanel.innerHTML = '<p class="error">Project not found. <a href="#projects">Return to projects</a>.</p>';
