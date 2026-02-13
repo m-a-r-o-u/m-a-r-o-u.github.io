@@ -183,6 +183,18 @@
         color: var(--muted);
       }
 
+      .projects-return-link {
+        color: #71e6ff;
+        text-decoration: none;
+        border-bottom: 1px dashed transparent;
+      }
+
+      .projects-return-link:hover,
+      .projects-return-link:focus-visible {
+        border-bottom-color: currentColor;
+        outline: none;
+      }
+
       .visually-hidden {
         position: absolute;
         width: 1px;
@@ -392,6 +404,10 @@
             const projectPath = projectFiles[projectSlug];
             if (projectPath) {
               await renderSection(section, projectPath);
+              const projectHeading = targetPanel.querySelector('h1, h2, h3');
+              if (projectHeading) {
+                projectHeading.outerHTML = '<h2><a class="projects-return-link" href="#projects">Projects ←</a></h2>';
+              }
             } else {
               targetPanel.innerHTML = '<p class="error">Project not found. <a href="#projects">Return to projects</a>.</p>';
             }
