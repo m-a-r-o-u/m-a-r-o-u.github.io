@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CV | Mares Barekzai, PhD</title>
+    <style>
+      :root {
+        --bg: #020202;
+        --text: #f2f2f2;
+        --muted: #7a7a7a;
+        --line: #171717;
+        --accent: #71e6ff;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      }
+      .page {
+        width: min(920px, 92vw);
+        margin: 0 auto;
+        padding: 40px 0 48px;
+      }
+      .top-nav {
+        display: flex;
+        gap: 14px;
+        margin-bottom: 26px;
+      }
+      .top-nav a {
+        color: var(--muted);
+        text-decoration: none;
+        border-bottom: 1px dashed transparent;
+      }
+      .top-nav a:hover,
+      .top-nav a:focus-visible {
+        color: #c9c9c9;
+        border-bottom-color: currentColor;
+        outline: none;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(1.45rem, 2.6vw, 2.25rem);
+      }
+      .subtitle {
+        margin: 8px 0 0;
+        color: var(--muted);
+      }
+      section {
+        margin-top: 28px;
+        padding-top: 16px;
+        border-top: 1px solid var(--line);
+      }
+      h2 {
+        margin: 0 0 12px;
+        font-size: 1rem;
+        color: var(--accent);
+        letter-spacing: 0.2px;
+      }
+      p, li { line-height: 1.6; }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      li { margin-bottom: 10px; }
+      .item-title { color: #f6f6f6; }
+      .meta { color: var(--muted); font-size: 0.95rem; }
+      .footer-nav {
+        border-top: 1px solid var(--line);
+        margin-top: 34px;
+        padding-top: 16px;
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+      .footer-nav a {
+        color: var(--muted);
+        text-decoration: none;
+        border-bottom: 1px dashed transparent;
+      }
+      .footer-nav a:hover,
+      .footer-nav a:focus-visible {
+        color: #c9c9c9;
+        border-bottom-color: currentColor;
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="top-nav" aria-label="Top navigation">
+        <a href="/">← Home</a>
+        <a href="/blog/">Blog</a>
+      </nav>
+
+      <header>
+        <h1>Mares Barekzai, PhD</h1>
+        <p class="subtitle">Engineer · Research Infrastructure · HPC/GPU Platforms · Educator</p>
+      </header>
+
+      <section>
+        <h2>Profile</h2>
+        <p>
+          PhD-trained engineer focused on high-performance computing environments, research infrastructure,
+          and practical systems design. I bridge academic depth with operational reliability, helping teams move
+          from research questions to production-grade workloads.
+        </p>
+      </section>
+
+      <section>
+        <h2>Core Expertise</h2>
+        <ul>
+          <li>• HPC and GPU systems operations (scheduling, throughput, reproducibility)</li>
+          <li>• Scientific platform engineering and workload enablement</li>
+          <li>• Performance profiling, bottleneck analysis, and optimization strategy</li>
+          <li>• Developer/researcher experience: documentation, onboarding, guardrails</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Experience Highlights</h2>
+        <ul>
+          <li>
+            <div class="item-title">Research Infrastructure & Platform Engineering</div>
+            <div class="meta">Designed and supported compute environments that make complex workflows approachable for scientists.</div>
+          </li>
+          <li>
+            <div class="item-title">HPC Workload Enablement</div>
+            <div class="meta">Helped teams scale workloads across shared systems while balancing policy, quotas, and usability.</div>
+          </li>
+          <li>
+            <div class="item-title">Teaching & Technical Mentorship</div>
+            <div class="meta">Translated complex engineering topics into clear, practical guidance for learners and collaborators.</div>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Education</h2>
+        <ul>
+          <li>
+            <div class="item-title">PhD</div>
+            <div class="meta">Research-focused doctoral training with strong emphasis on rigorous methods and systems thinking.</div>
+          </li>
+        </ul>
+      </section>
+
+      <nav class="footer-nav" aria-label="Site navigation">
+        <a href="/cv/">CV</a>
+        <a href="/blog/">Blog</a>
+        <a href="/projects/">Projects</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </main>
+  </body>
+</html>
