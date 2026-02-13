@@ -140,7 +140,7 @@
       <main class="hero">
         <div class="avatar" aria-hidden="true"></div>
         <h1>Mares Barekzai, PhD</h1>
-        <p class="tagline">Engineer, Tutor, Lifelong Learner</p>
+        <p class="tagline" id="rotating-tagline">Engineer, Tutor, Lifelong Learner</p>
 
         <nav class="social" aria-label="Social links">
           <a class="github" href="https://github.com/m-a-r-o-u" target="_blank" rel="noreferrer noopener" aria-label="GitHub">
@@ -177,5 +177,42 @@
       <a href="/projects/">Projects</a>
       <a href="/contact/">Contact</a>
     </nav>
+
+    <script>
+      (function () {
+        const tagline = document.getElementById('rotating-tagline');
+        if (!tagline) return;
+
+        const fallback = [tagline.textContent.trim()];
+
+        function setTagline(text) {
+          tagline.textContent = text;
+        }
+
+        fetch('descriptions.json', { cache: 'no-store' })
+          .then((response) => {
+            if (!response.ok) throw new Error('Failed to load descriptions.json');
+            return response.json();
+          })
+          .then((items) => {
+            const descriptions = Array.isArray(items)
+              ? items.filter((item) => typeof item === 'string' && item.trim().length > 0)
+              : fallback;
+
+            if (!descriptions.length) return;
+
+            let index = 0;
+            setTagline(descriptions[index]);
+
+            setInterval(() => {
+              index = (index + 1) % descriptions.length;
+              setTagline(descriptions[index]);
+            }, 5000);
+          })
+          .catch(() => {
+            setTagline(fallback[0]);
+          });
+      })();
+    </script>
   </body>
 </html>
