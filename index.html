@@ -62,6 +62,14 @@
         color: var(--muted);
         font-size: clamp(1rem, 1.7vw, 1.45rem);
         letter-spacing: 0.2px;
+        opacity: 1;
+        filter: blur(0);
+        transition: opacity 420ms ease, filter 420ms ease;
+      }
+
+      .tagline.is-fading {
+        opacity: 0.2;
+        filter: blur(1.2px);
       }
 
       .social {
@@ -184,9 +192,28 @@
         if (!tagline) return;
 
         const fallback = [tagline.textContent.trim()];
+        const ROTATE_EVERY_MS = 5000;
+        const FADE_MS = 420;
 
         function setTagline(text) {
           tagline.textContent = text;
+        }
+
+        function randomNextIndex(length, currentIndex) {
+          if (length <= 1) return 0;
+          let nextIndex = currentIndex;
+          while (nextIndex === currentIndex) {
+            nextIndex = Math.floor(Math.random() * length);
+          }
+          return nextIndex;
+        }
+
+        function transitionTo(text) {
+          tagline.classList.add('is-fading');
+          window.setTimeout(() => {
+            setTagline(text);
+            tagline.classList.remove('is-fading');
+          }, FADE_MS);
         }
 
         fetch('descriptions.json', { cache: 'no-store' })
@@ -201,13 +228,13 @@
 
             if (!descriptions.length) return;
 
-            let index = 0;
+            let index = Math.floor(Math.random() * descriptions.length);
             setTagline(descriptions[index]);
 
-            setInterval(() => {
-              index = (index + 1) % descriptions.length;
-              setTagline(descriptions[index]);
-            }, 5000);
+            window.setInterval(() => {
+              index = randomNextIndex(descriptions.length, index);
+              transitionTo(descriptions[index]);
+            }, ROTATE_EVERY_MS);
           })
           .catch(() => {
             setTagline(fallback[0]);
